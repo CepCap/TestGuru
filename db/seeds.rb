@@ -6,11 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Test.create(title: "Hello world!", category_id: 1)
-Test.create(title: "Off to a fresh start.", category_id: 1)
-Test.create(title: "Lets get to business", category_id: 2)
-Test.create(title: "How and why", category_id: 2)
-Test.create(title: "Really complicated stuff", category_id: 5)
+category = Category.create([{title: "CSS"}, {title: "PHP"}, {title: "C++"}, {title: "Unity"}, {title: "Hard and complicated stuff"}])
+
+users = User.create([{name: "CepCap"}, {name: "Soloma"}, {name: "Avaak"}, {name: "Edi"}, {name: "Kani"}])
+
+Test.create(title: "Hello world!", category_id: 1, level: 1)
+Test.create(title: "Off to a fresh start.", category_id: 1, level: 2)
+Test.create(title: "Lets get to business", category_id: 2, level: 3)
+Test.create(title: "How and why", category_id: 2, level: 4)
+Test.create(title: "Really complicated stuff", category_id: 3, level: 5)
 
 Question.create(body: "How to hello world?", test_id: 1)
 Question.create(body: "How to create a variable?", test_id: 1)
@@ -23,15 +27,3 @@ Answer.create(body: "Something different", correct: false, question_id: 1)
 Answer.create(body: "etc", correct: false, question_id: 2)
 Answer.create(body: "correct answer", correct: true, question_id: 2)
 Answer.create(body: "not", correct: false, question_id: 5)
-
-User.create(name: "CepCap")
-User.create(name: "Soloma")
-User.create(name: "Avaak")
-User.create(name: "Edi")
-User.create(name: "Kani")
-
-Category.create(title: "CSS", level: 1)
-Category.create(title: "PHP", level: 1)
-Category.create(title: "C++", level: 2)
-Category.create(title: "Unity", level: 2)
-Category.create(title: "Hard and complicated stuff", level: 5)
