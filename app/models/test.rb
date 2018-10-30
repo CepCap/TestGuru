@@ -3,6 +3,6 @@ class Test < ApplicationRecord
   belongs_to :category
 
   def self.show_by_category(category)
-    Category.joins(:tests).where(title: category).select('tests.*').collect(&:title)
+    Test.joins(:category).where(categories: {title: category}).order('id DESC').pluck('tests.title')
   end
 end
