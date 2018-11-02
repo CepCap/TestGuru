@@ -27,4 +27,3 @@ Answer.create(body: "Something different", correct: false, question_id: 1)
 Answer.create(body: "etc", correct: false, question_id: 2)
 Answer.create(body: "correct answer", correct: true, question_id: 2)
 Answer.create(body: "not", correct: false, question_id: 5)
-
