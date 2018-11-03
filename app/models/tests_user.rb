@@ -1,4 +1,4 @@
 class TestsUser < ApplicationRecord
-  belongs_to :tests
-  belongs_to :users
+  belongs_to :test
+  belongs_to :user
 end
