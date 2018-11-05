@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_011313) do
+ActiveRecord::Schema.define(version: 2018_11_05_180351) do
 
   create_table "answers", force: :cascade do |t|
     t.string "body", null: false
@@ -50,12 +50,14 @@ ActiveRecord::Schema.define(version: 2018_11_02_011313) do
     t.integer "user_id", null: false
     t.integer "test_id", null: false
     t.integer "progress", default: 0
+    t.boolean "creator"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
 end
