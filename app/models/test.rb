@@ -15,6 +15,6 @@ class Test < ApplicationRecord
   scope :pick_category, -> (category) { joins(:category).where(categories: { title: category }) }
 
   def self.show_by_category(category)
-    Test.pick_category(category).order('tests.id DESC').pluck(&:title)
+    Test.pick_category(category).order('id DESC').pluck(&:title)
   end
 end
