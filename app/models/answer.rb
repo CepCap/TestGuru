@@ -9,6 +9,6 @@ class Answer < ApplicationRecord
   private
 
   def validate_answers_count
-    errors.add(:question_id) unless question.answers.count.between?(0, 3)
+    errors.add(:question_id) unless question.answers.count.between?(0, 4)
   end
 end
