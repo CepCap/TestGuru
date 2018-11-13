@@ -1,12 +1,17 @@
 class QuestionsController < ApplicationController
+  before_action :current_test, only: [:create, :index, :show, :destroy]
   before_action :find_question, only: [:create, :index, :show, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def create
-    question = Question.create(question_params) unless question_params == nil
+    question = @test.questions.new(question_params)
+    if question.save
+      render plain: question.inspect
+    else
+      render plain: "Failed to save question"
+    end
     question.test_id = params[:test_id]
-    render plain:question.inspect
     # redirect_to controller: :tests, action: "show", id: params[:test_id] 
   end
 
@@ -23,6 +28,10 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def current_test
+    @test = Test.find(params[:test_id])
+  end
 
   def find_question
     @question = Test.find(params[:test_id]).questions
