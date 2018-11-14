@@ -7,7 +7,7 @@ class TestsController < ApplicationController
 
   def show
     render inline: '<p> <%= @test.title %> </p>
-                   <body> <%= @test.questions.collect(&:body).join(" | ") %> </body>'
+                   <body> <%= @test.questions.pluck(:body).join(" | ") %> </body>'
   end
 
   private 

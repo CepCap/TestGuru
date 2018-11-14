@@ -1,40 +1,45 @@
 class QuestionsController < ApplicationController
-  before_action :current_test, only: [:create, :index, :show, :destroy]
-  before_action :find_question, only: [:create, :index, :show, :destroy]
-
+  before_action :current_test, only: [:index, :create]
+  before_action :current_test_questions, only: [:index, :create]
+  before_action :standalone_question, only: [:show, :destroy]
+  
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def create
-    question = @question.new(question_params)
-    if question.save
+    question = Question.new(question_params)
+    question.test_id = @current_test.id
+    if question.save 
       render plain: question.inspect
     else
       render plain: "Failed to save question"
     end
-    # question.test_id = params[:test_id]
-    # redirect_to controller: :tests, action: "show", id: params[:test_id] 
-  end
-
-  def index
-    render inline: "<p> <%= @question.pluck(:body).join(' | ') %> </p>"
   end
 
   def show
-    render inline: "<p> <%= @question.body %> </p>"
+    render inline: "<p> <%= @standalone_question.body %> </p>"
+  end
+
+  def index
+    render inline: "<p> <%= @current_test_questions.pluck(:body).join(' | ') %> </p>"
   end
 
   def destroy
-    @question.destroy
+    @standalone_question.destroy
+    redirect_to controller: :tests, action: "show", id: params[:test_id]
   end
 
   private
 
   def current_test
-    @test = Test.find(params[:test_id])
+    @current_test = Test.find(params[:test_id])
   end
 
-  def find_question
-    @question = @test.questions
+  def current_test_questions
+    @current_test_questions = @current_test.questions
+  end
+
+  def standalone_question
+    @standalone_question = Question.find(params[:id])
   end
 
   def question_params
@@ -42,6 +47,6 @@ class QuestionsController < ApplicationController
   end
 
   def rescue_with_question_not_found
-    render plain: "Question not found"
+    head 404
   end
 end
