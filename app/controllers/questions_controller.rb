@@ -5,13 +5,13 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def create
-    question = @test.questions.new(question_params)
+    question = @question.new(question_params)
     if question.save
       render plain: question.inspect
     else
       render plain: "Failed to save question"
     end
-    question.test_id = params[:test_id]
+    # question.test_id = params[:test_id]
     # redirect_to controller: :tests, action: "show", id: params[:test_id] 
   end
 
@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
   end
 
   def find_question
-    @question = Test.find(params[:test_id]).questions
+    @question = @test.questions
   end
 
   def question_params
