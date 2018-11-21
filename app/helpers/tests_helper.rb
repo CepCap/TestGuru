@@ -1,11 +1,11 @@
 module TestsHelper
   def test_header
-    if params[:action] == "new"
+    if @test.id.nil?
       "Create New Test"
-    elsif params[:action] == "edit"
-      "Edit test"
-    else
+    elsif @test.errors.present?
       "Error"
+    else
+      "Edit test"
     end
   end
 end

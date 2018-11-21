@@ -6,7 +6,6 @@ class TestsController < ApplicationController
   end
 
   def show
-    @test
   end
 
   def create
@@ -27,7 +26,6 @@ class TestsController < ApplicationController
   end
 
   def update
-    @test
     if @test.update(test_params)
       redirect_to @test
     else
@@ -37,7 +35,7 @@ class TestsController < ApplicationController
 
   def destroy
     @test.delete
-    redirect_to action: "index"
+    redirect_to tests_path
   end
 
   private 
