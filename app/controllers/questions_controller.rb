@@ -5,30 +5,46 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def new
+    @test = Test.find(params[:test_id])
     @question = Question.new
   end
 
   def create
-    # question = @find_test.questions.new(question_params)
+    @test = @find_test
     @question = Question.new(question_params)
-    # if @question.save 
-    #   redirect_to @question
-    # else
-    #   render plain: "Failed to save question"
-    # end
+    @question.test_id = params[:test_id]
+    if @question.save 
+      redirect_to @question
+    else
+      render :new
+    end
   end
 
   def show
-    render inline: "<p> <%= @find_question.body %> </p>"
+    @question = @find_question
   end
 
   def index
-    render inline: "<p> <%= @find_test.questions.pluck(:body).join(' | ') %> </p>"
+    @questions = Question.where(test_id: params[:test_id])
   end
 
   def destroy
-    @find_question.destroy
-    redirect_to test_path(@find_test)
+    @question = @find_question
+    @question.delete
+    redirect_to test_path(@question.test_id)
+  end
+
+  def edit
+    @find_question
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
+    end
   end
 
   private
