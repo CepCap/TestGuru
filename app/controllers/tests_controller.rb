@@ -22,7 +22,6 @@ class TestsController < ApplicationController
   end
 
   def edit
-    @test
   end
 
   def update

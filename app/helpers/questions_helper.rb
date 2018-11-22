@@ -1,7 +1,7 @@
 module QuestionsHelper
   
   def question_header
-    if @question.id.nil?
+    if @question.new_record?
       "Create New Question for: #{@test.title} "
     elsif @question.errors.present?
       "Error"

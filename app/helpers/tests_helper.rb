@@ -1,6 +1,6 @@
 module TestsHelper
   def test_header
-    if @test.id.nil?
+    if @test.new_record?
       "Create New Test"
     elsif @test.errors.present?
       "Error"
