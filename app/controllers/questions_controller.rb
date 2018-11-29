@@ -21,10 +21,6 @@ class QuestionsController < ApplicationController
   def show
   end
 
-  def index
-    @questions = @test.questions
-  end
-
   def destroy
     @question.delete
     redirect_to test_path(@question.test_id)
