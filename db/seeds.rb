@@ -24,14 +24,26 @@ tests = Test.create([{ title: "Hello world!", category: categories[0], level: 1,
                      { title: "How and why", category: categories[2], level: 4, author: users[1] },
                      { title: "Really complicated stuff", category: categories[3], level: 5, author: users[1] }])
 
-questions = Question.create([{ body: "How to hello world?", test: tests[0] },
-                             { body: "How to create a variable?", test: tests[1] },
-                             { body: "Choose the right sequence", test: tests[2] },
-                             { body: "What is wrong with this array?", test: tests[2] },
-                             { body: "What should you do to become a better programmer?", test: tests[5] }])
+# questions = Question.create([{ body: "How to hello world?", test: tests[0] },
+#                              { body: "How to create a variable?", test: tests[1] },
+#                              { body: "Choose the right sequence", test: tests[2] },
+#                              { body: "What is wrong with this array?", test: tests[2] },
+#                              { body: "What should you do to become a better programmer?", test: tests[5] }])
 
-answers = Answer.create([{ body: "puts Hello World", correct: true, question: questions[0] },
-                         { body: "Something different", correct: false, question: questions[0] },
-                         { body: "etc", correct: true, question: questions[1] },
-                         { body: "correct answer", correct: true, question: questions[1] },
-                         { body: "not", correct: false, question: questions[4] }])
+# answers = Answer.create([{ body: "puts Hello World", correct: true, question: questions[0] },
+#                          { body: "Something different", correct: false, question: questions[0] },
+#                          { body: "etc", correct: true, question: questions[1] },
+#                          { body: "correct answer", correct: true, question: questions[1] },
+#                          { body: "not", correct: false, question: questions[3] }])
+questions = []
+
+tests.each do |test|
+  3.times do 
+    questions << Question.create(body: "Generic question", test: test)
+  end
+end
+
+questions.each do |question|
+    Answer.create(body: "Correct", correct: true, question: question)
+    Answer.create(body: "Wrong", correct: false, question: question)
+end
