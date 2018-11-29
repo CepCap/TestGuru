@@ -1,12 +1,10 @@
-<table>
-  <tr>
-    <p> Title: <%= @test.title %> </p>
-    <p> Level: <%= @test.level %> </p>
-    <p> Questions: </p>
-    <% @test.questions.each do |question| %>
-      <p> <%= link_to "#{question.body}", question %></p>
-    <% end %>
-  </tr>
-</table>
+<tr>
+  <p> Title: <%= @test.title %> </p>
+  <p> Level: <%= @test.level %> </p>
+  <p> Questions: </p>
+  <% @test.questions.each do |question| %>
+    <p> <%= link_to "#{question.body}", question %></p>
+  <% end %>
+</tr>
 
 <p><%= link_to "Back", tests_path %></p>
