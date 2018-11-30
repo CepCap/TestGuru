@@ -5,12 +5,14 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_first_question, on: :create
 
+  SUCCESS_RATE = 85
+
   def completed?
     current_question.nil?
   end
 
   def count
-    self.test.questions.index(current_question) + 1
+    test.questions.index(current_question) + 1
   end
 
   def accept!(answer_ids)
@@ -22,8 +24,16 @@ class TestPassage < ApplicationRecord
     save!
   end
 
+  def result
+    if completion_percent > SUCCESS_RATE
+      'success'
+    else
+      'fail'
+    end
+  end
+
   def completion_percent
-    @completion_percent = self.correct_questions.to_f / self.test.questions.count.to_f * 100
+    self.correct_questions.to_f / self.test.questions.count.to_f * 100
   end
 
   private
