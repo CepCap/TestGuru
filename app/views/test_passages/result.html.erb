@@ -1,7 +1,3 @@
-<% if @test_passage.completion_percent > 85 %>
-  <p> You passed with <font color="green" ><%= @test_passage.completion_percent.to_i %>% </font>completion rate! </p>
-<% else %>
-  <p> You failed! You answered only <font color="red" ><%= @test_passage.completion_percent.to_i %>%</font> of questions correct! </p>
-<% end %>
+<%= render @test_passage.result %>
 
 <p><%= link_to "Back to tests", tests_path %></p>
