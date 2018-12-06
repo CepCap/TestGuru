@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  skip_before_action :authenticate_user!
+
   def new
   end
 
@@ -8,11 +10,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      if cookies[:id].nil?
-        redirect_to controller: cookies[:controller], action: cookies[:action]
-      else
-        redirect_to controller: cookies[:controller], action: cookies[:action], id: cookies[:id]
-      end
+      redirect_to cookies[:initial_path]
     else
       render :new
     end
