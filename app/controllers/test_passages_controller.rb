@@ -21,6 +21,7 @@ class TestPassagesController < ApplicationController
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
+    @test_passage.user_id = session[:user_id]
   end
 
 end

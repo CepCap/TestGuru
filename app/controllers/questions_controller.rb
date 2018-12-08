@@ -9,16 +9,16 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = @current_test.questions.new(question_params)
-    if question.save 
-      render plain: question.inspect
+    @question = Question.new(question_params)
+    @question.test_id = params[:test_id]
+    if @question.save 
+      redirect_to @question
     else
-      render plain: "Failed to save question"
+      render :new
     end
   end
 
   def show
-    render inline: "<p> <%= @standalone_question.body %> </p>"
   end
 
   def destroy
@@ -39,12 +39,12 @@ class QuestionsController < ApplicationController
 
   private
 
-  def current_test
-    @current_test = Test.find(params[:test_id])
+  def find_test
+    @test = Test.find(params[:test_id])
   end
 
-  def standalone_question
-    @standalone_question = Question.find(params[:id])
+  def find_question
+    @question = Question.find(params[:id])
   end
 
   def question_params
