@@ -8,8 +8,6 @@ class TestPassage < ApplicationRecord
 
   PERCENT_TO_PASS = 85
 
-  SUCCESS_RATE = 85
-
   def completed?
     current_question.nil?
   end
@@ -23,7 +21,7 @@ class TestPassage < ApplicationRecord
   end
 
   def count
-    test.questions.index(current_question) + 1
+    self.test.questions.index(current_question) + 1
   end
 
   def accept!(answer_ids)
@@ -31,14 +29,6 @@ class TestPassage < ApplicationRecord
       self.correct_questions += 1
     end
     save!
-  end
-
-  def result
-    if completion_percent > SUCCESS_RATE
-      'success'
-    else
-      'fail'
-    end
   end
 
   def completion_percent
