@@ -1,12 +1,9 @@
 class TestsController < ApplicationController
-  before_action :find_test, only: %i[show destroy update start edit]
-  before_action :find_user, only: %i[start]
+  before_action :authenticate_user!
+  before_action :find_test, only: %i[destroy update start edit]
 
   def index
     @tests = Test.all
-  end
-
-  def show
   end
 
   def create
@@ -18,30 +15,9 @@ class TestsController < ApplicationController
     end
   end 
 
-  def new
-    @test = Test.new
-  end
-
-  def edit
-  end
-
-  def update
-    @test.author = User.find(session[:user_id])
-    if @test.update(test_params)
-      redirect_to @test
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @test.delete
-    redirect_to tests_path
-  end
-
   def start
-    @user.tests.push(@test) 
-    redirect_to @user.test_passage(@test)
+    current_user.tests.push(@test) 
+    redirect_to current_user.test_passage(@test)
   end
 
   private 
@@ -52,9 +28,5 @@ class TestsController < ApplicationController
 
   def find_test
     @test = Test.find(params[:id])
-  end
-
-  def find_user
-    @user = User.first
   end
 end

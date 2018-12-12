@@ -12,6 +12,12 @@ categories = Category.create([{ title: "CSS" },
                             { title: "Unity" }, 
                             { title: "Hard and complicated stuff" }])
 
+users = User.create([{ name: "CepCap", email: 'test@gmail.com' }, 
+                     { name: "Soloma", email: 'test1@gmail.com' }, 
+                     { name: "Avaak", email: 'tes@gmail.com' }, 
+                     { name: "Edi", email: 'te@gmail.com' }, 
+                     { name: "Kani", email: 't@gmail.com' }])
+
 tests = Test.create([{ title: "Hello world!", category: categories[0], level: 1, author: users[0]},
                      { title: "Off to a fresh start.", category: categories[1], level: 2, author: users[0] },
                      { title: "Lets get to business", category: categories[2], level: 3, author: users[1] },
