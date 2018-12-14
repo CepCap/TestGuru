@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class Admin::QuestionsController < Admin::BaseController
   before_action :find_test, only: [:create, :new]
   before_action :find_question, only: [:show, :destroy, :edit, :update]
   
