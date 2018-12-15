@@ -6,15 +6,6 @@ class TestsController < ApplicationController
     @tests = Test.all
   end
 
-  def create
-    @test = Test.new(test_params)
-    if @test.save
-      redirect_to @test
-    else
-      render :new
-    end
-  end 
-
   def start
     current_user.tests.push(@test) 
     redirect_to current_user.test_passage(@test)

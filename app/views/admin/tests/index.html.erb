@@ -6,7 +6,7 @@
     <th> Level </th>
     <th> Questions count </th>
   </tr>
-  <% @tests.each do |test| %>
+  <% render @tests %>
     <tr>
       <td><%= link_to "#{test.title}", admin_test_path(test) %></td>
       <td><%= test.level %></td>
