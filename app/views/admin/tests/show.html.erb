@@ -3,8 +3,8 @@
   <p> Level: <%= @test.level %> </p>
   <p> Questions: </p>
   <% @test.questions.each do |question| %>
-    <p> <%= link_to "#{question.body}", question %></p>
+    <p> <%= link_to "#{question.body}", admin_question_path(question) %></p>
   <% end %>
 </tr>
 
-<p><%= link_to "Back", tests_path %></p>
+<p><%= link_to "Back", admin_tests_path %></p>

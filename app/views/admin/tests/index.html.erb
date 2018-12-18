@@ -1,15 +1,17 @@
+<p><%= link_to 'New test', new_admin_test_path %></p>
+
 <table>
   <tr>
     <th> Title </th>
     <th> Level </th>
     <th> Questions count </th>
   </tr>
-  <% @tests.each do |test| %>
+  <% render @tests %>
     <tr>
-      <td><i><%= "#{test.title}" %></i></td>
+      <td><%= link_to "#{test.title}", admin_test_path(test) %></td>
       <td><%= test.level %></td>
       <td><%= test.questions.count %></td>
-      <td><%= button_to 'Start', start_test_path(test) %></td>
+      <td><%= link_to "Edit", edit_admin_test_path(test) %></td>
     </tr>
   <% end %>
 </table>
