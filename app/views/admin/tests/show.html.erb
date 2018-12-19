@@ -1,7 +1,7 @@
 <tr>
-  <p> Title: <%= @test.title %> </p>
-  <p> Level: <%= @test.level %> </p>
-  <p> Questions: </p>
+  <p> <%= "#{Tests.human_attribute_name(:title)}: #{@test.title}" %> </p>
+  <p> <%= "#{Tests.human_attribute_name(:level)}: #{@test.level}" %> </p>
+  <p> <%= t('.questions') %>: </p>
   <% @test.questions.each do |question| %>
     <p> <%= link_to "#{question.body}", admin_question_path(question) %></p>
   <% end %>

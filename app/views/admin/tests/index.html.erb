@@ -1,17 +1,15 @@
-<p><%= link_to 'New test', new_admin_test_path %></p>
+<p><%= link_to t('.link_to_new'), new_admin_test_path %></p>
 
-<table>
+<tr>
+  <th> <%= Tests.human_attribute_name(:title) %> </th>
+  <th> <%= Tests.human_attribute_name(:level) %> </th>
+  <th> <%= t.('.question_count') %> </th>
+</tr>
+<% render @tests %>
   <tr>
-    <th> Title </th>
-    <th> Level </th>
-    <th> Questions count </th>
+    <td><%= link_to "#{test.title}", admin_test_path(test) %></td>
+    <td><%= test.level %></td>
+    <td><%= test.questions.count %></td>
+    <td><%= link_to t('link_to_edit'), edit_admin_test_path(test) %></td>
   </tr>
-  <% render @tests %>
-    <tr>
-      <td><%= link_to "#{test.title}", admin_test_path(test) %></td>
-      <td><%= test.level %></td>
-      <td><%= test.questions.count %></td>
-      <td><%= link_to "Edit", edit_admin_test_path(test) %></td>
-    </tr>
-  <% end %>
-</table>
+<% end %>
