@@ -1,0 +1,15 @@
+ru:
+  admin:
+    tests:
+      index:
+        link_to_new: 'Новый тест'
+        link_to_edit: 'Редактировать'
+        question_count: 'Количество вопросов.'
+      new:
+      edit:
+      show:
+        questions: 'Вопросы'
+  tests:
+    index:
+      link_to_start: 'Начать тест!'
+      question_count: 'Количество вопросов.'

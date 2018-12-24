@@ -1,15 +1,15 @@
 <table>
   <tr>
-    <th> Title </th>
-    <th> Level </th>
-    <th> Questions count </th>
+    <th> <%= Tests.human_attribute_name(:title) %> </th>
+    <th> <%= Tests.human_attribute_name(:level) %> </th>
+    <th> <%= t.('.question_count') </th>
   </tr>
   <% @tests.each do |test| %>
     <tr>
       <td><i><%= "#{test.title}" %></i></td>
       <td><%= test.level %></td>
       <td><%= test.questions.count %></td>
-      <td><%= button_to 'Start', start_test_path(test) %></td>
+      <td><%= button_to t('.link_to_start'), start_test_path(test) %></td>
     </tr>
   <% end %>
 </table>

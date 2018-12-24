@@ -1,0 +1,16 @@
+en:
+  admin:
+    tests:
+      index:
+        link_to_new: 'New test'
+        link_to_edit: 'Edit'
+        question_count: 'Question count'
+      new:
+      edit:
+      show:
+        questions: 'Questions'
+  tests:
+    index:
+      link_to_start: 'Begin test!'
+      question_count: 'Question count'
+
