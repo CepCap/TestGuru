@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"> <%= Question.model_name.human %> </th>
+      <th scope="col"> <%= Gist.human_attribute_name(:link) %> </th>
+      <th scope="col"> <%= User.model_name.human %> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% render @gists %>
+      <tr>
+        <td><i><%= link_to truncate(gist.question.body, length: 25), admin_question_path(gist.question) %></i></td>
+        <td><i><%= link_to "Gist", "#{gist.link}" %></i></td>
+        <td><i><%= "#{gist.user.email}" %></i></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

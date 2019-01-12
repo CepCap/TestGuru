@@ -6,17 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-categories = Category.create([{ title: "CSS" }, 
-                            { title: "PHP" }, 
-                            { title: "C++" }, 
-                            { title: "Unity" }, 
+categories = Category.create([{ title: "CSS" },
+                            { title: "PHP" },
+                            { title: "C++" },
+                            { title: "Unity" },
                             { title: "Hard and complicated stuff" }])
 
-users = User.create([{ name: "CepCap", email: 'test@gmail.com' }, 
-                     { name: "Soloma", email: 'test1@gmail.com' }, 
-                     { name: "Avaak", email: 'tes@gmail.com' }, 
-                     { name: "Edi", email: 'te@gmail.com' }, 
-                     { name: "Kani", email: 't@gmail.com' }])
+users = User.create([{ email: 'test@gmail.com' },
+                     { email: 'test1@gmail.com' },
+                     { email: 'tes@gmail.com' },
+                     { email: 'te@gmail.com' },
+                     { email: 't@gmail.com' }])
 
 tests = Test.create([{ title: "Hello world!", category: categories[0], level: 1, author: users[0]},
                      { title: "Off to a fresh start.", category: categories[1], level: 2, author: users[0] },
@@ -27,7 +27,7 @@ tests = Test.create([{ title: "Hello world!", category: categories[0], level: 1,
 questions = []
 
 tests.each do |test|
-  3.times do 
+  3.times do
     questions << Question.create(body: "Generic question", test: test)
   end
 end

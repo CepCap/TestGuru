@@ -2,8 +2,14 @@ en:
   activerecord:
     models:
       test: "Test"
+      gist: "Gist"
+      question: "Question"
+      user: "User"
+
 
     attributes:
       test:
         title: "Title"
         level: "Level"
+      gist:
+        link: "Link"
