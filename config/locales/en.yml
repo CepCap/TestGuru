@@ -1,2 +1,7 @@
 en:
+  test_passages:
+    gist:
+      description: "TestGuru. A problem with a question: "
+      success: "Gist was successfully created."
+      failure: "An error occured while saving gist"
   hello: "Hello world"

@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'dotenv/load'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -18,5 +19,6 @@ module TestGuru
     config.time_zone = 'Moscow'
     I18n.config.available_locales = :ru, :en
     I18n.config.default_locale = :ru
+    #config.autoload_paths << "#{Rails.root}/lib/clients"
   end
 end

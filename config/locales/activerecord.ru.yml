@@ -2,8 +2,13 @@ ru:
   activerecord:
     models:
       test: "Тест"
+      gist: "Гист"
+      question: "Вопрос"
+      user: "Пользователь"
 
     attributes:
       test:
         title: "Название"
         level: "Уровень"
+      gist:
+        link: "Ссылка"
