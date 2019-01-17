@@ -1,0 +1,6 @@
+<tr>
+  <td><i><%= "#{test.title}" %></i></td>
+  <td><%= test.level %></td>
+  <td><%= test.questions.count %></td>
+  <td><%= button_to t('tests.index.link_to_start'), start_test_path(test) %></td>
+</tr>

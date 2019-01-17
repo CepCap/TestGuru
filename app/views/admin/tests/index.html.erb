@@ -1,16 +1,13 @@
 <p><%= link_to t('.link_to_new'), new_admin_test_path %></p>
-<table>
+<table class="table">
   <tr>
-    <th> <%= Test.human_attribute_name(:title) %> </th>
+    <th class="sort-by-title pointer">
+      <%= Test.human_attribute_name(:title) %>
+      <%= octicon "arrow-up", class: 'text-success hide' %>
+      <%= octicon "arrow-down", class: 'text-success hide' %>
+    </th>
     <th> <%= Test.human_attribute_name(:level) %> </th>
     <th> <%= t('.question_count') %> </th>
   </tr>
-  <% @tests.each do |test| %>
-    <tr>
-      <td><%= link_to "#{test.title}", admin_test_path(test) %></td>
-      <td><%= test.level %></td>
-      <td><%= test.questions.count %></td>
-      <td><%= link_to t('.link_to_edit'), edit_admin_test_path(test) %></td>
-    </tr>
-  <% end %>
+  <%= render @tests %>
 </table>
