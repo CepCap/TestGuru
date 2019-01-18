@@ -3,10 +3,14 @@ document.addEventListener('turbolinks:load', function() {
   var confirm_password = document.getElementById('user_password_confirmation')
 
   confirm_password.oninput = function() {
-    if ( password.value == confirm_password.value) {
-      confirm_password.style.color = 'green'
+    if (confirm_password.value.length == 0) {
+      confirm_password.style.color = ""
     } else {
-      confirm_password.style.color = "red";
+      if ( password.value == confirm_password.value) {
+        confirm_password.style.color = 'green'
+      } else {
+        confirm_password.style.color = "red";
+      }
     }
   }
 })
