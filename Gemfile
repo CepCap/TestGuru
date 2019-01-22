@@ -22,6 +22,7 @@ gem 'jquery-rails'
 
 #Styles
 gem 'bootstrap', '~> 4.2.1'
+gem 'octicons_helper'
 
 #GitHub
 gem "octokit", "~> 4.0"
