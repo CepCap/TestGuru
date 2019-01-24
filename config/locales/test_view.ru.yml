@@ -9,6 +9,8 @@ ru:
       edit:
       show:
         questions: 'Вопросы'
+      form_inline:
+        submit: 'OK'
   tests:
     index:
       link_to_start: 'Начать тест!'
