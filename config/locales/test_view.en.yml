@@ -9,8 +9,9 @@ en:
       edit:
       show:
         questions: 'Questions'
+      form_inline:
+        submit: 'OK'
   tests:
     index:
       link_to_start: 'Begin test!'
       question_count: 'Question count'
-
