@@ -1,0 +1,10 @@
+<h1> Contact us! <h1>
+
+<%= form_with @message, local: true do |form| %>
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_field :text %>
+  </p><br>
+
+  <p><%= form.submit %></p>
+<% end %>
