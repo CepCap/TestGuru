@@ -1,0 +1,10 @@
+<h1> Contact us! </h1>
+
+<%= form_with model: [@feedback], local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :message %><br>
+    <%= form.text_area :message %>
+  </div><br>
+
+  <p><%= form.submit %></p>
+<% end %>
