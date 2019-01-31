@@ -7,11 +7,9 @@ document.addEventListener('turbolinks:load', function() {
 
 function move(completion) {
   var myBar = document.querySelector('.myBar')
-  var width = 1
-  function frame() {
-    if (width <= 100) {
-      myBar.style.width = completion + '%'
-    }
+  var width = 0
+  if (width <= 100) {
+    myBar.style.width = completion + '%'
   }
   if (completion > 0) {
     myBar.classList.remove('hide')
