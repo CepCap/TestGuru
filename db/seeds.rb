@@ -36,3 +36,6 @@ questions.each do |question|
     Answer.create(body: "Correct", correct: true, question: question)
     Answer.create(body: "Wrong", correct: false, question: question)
 end
+
+admin = Admin.create(email: ENV["ADMIN_EMAIL"], first_name: "Cep", last_name: "Cap")
+admin.password = ENV["ADMIN_PASSWORD"]
