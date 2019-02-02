@@ -5,21 +5,21 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    @feedback = Feedback.new(message_params)
+    @feedback = Feedback.new(feedback_params)
     @feedback.user = current_user
     if @feedback.valid?
-        FeedbacksMailer.send_feedback(@feedback).deliver_now!
-        redirect_to root_path
-        flash[:notice] = "We have received your message and will be in touch soon!"
-      else
-        flash[:notice] = "There was an error sending your message. Please try again."
-        render :new
-      end
+      FeedbacksMailer.send_feedback(@feedback).deliver_now!
+      redirect_to root_path
+      flash[:notice] = "We have received your message and will be in touch soon!"
+    else
+      flash[:notice] = "There was an error sending your message. Please try again."
+      render :new
     end
+  end
 
   private
 
-  def message_params
-    params.require(:feedback).permit(:message)
+  def feedback_params
+    params.require(:feedback).permit(:message, :user_id)
   end
 end
