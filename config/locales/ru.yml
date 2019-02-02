@@ -1,9 +1,8 @@
 ru:
-  test_passage:
-    gist:
-      description: "TestGuru. Сложность с вопросом:"
-      success: "Gist успешно сохранен."
-      failure: "Во время сохранения gist произошла ошибка."
+  gist:
+    description: "TestGuru. Сложность с вопросом:"
+    success: "Gist успешно сохранен."
+    failure: "Во время сохранения gist произошла ошибка."
   activerecord:
     errors:
       messages:
