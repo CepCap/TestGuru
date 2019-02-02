@@ -6,6 +6,7 @@
   <td class="align-middle"><%= test.level %></td>
   <td class="align-middle"><%= test.questions.count %></td>
   <td class="align-middle"><%= link_to "Show", admin_test_path(test) %>
+  <td class="align-middle"><%= link_to "Add new question", new_admin_test_question_path(test) %>
   <td class="align-middle">
     <%= link_to t('.link_to_edit'),
     edit_admin_test_path(test),

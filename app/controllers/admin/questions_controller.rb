@@ -1,7 +1,7 @@
 class Admin::QuestionsController < Admin::BaseController
   before_action :find_test, only: [:create, :new]
   before_action :find_question, only: [:show, :destroy, :edit, :update]
-  
+
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def new
@@ -11,8 +11,8 @@ class Admin::QuestionsController < Admin::BaseController
   def create
     @question = Question.new(question_params)
     @question.test_id = params[:test_id]
-    if @question.save 
-      redirect_to @question
+    if @question.save
+      redirect_to [:admin, @question]
     else
       render :new
     end
