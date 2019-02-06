@@ -13,7 +13,7 @@
 
   <p>
     <%= form.label :category %><br>
-    <%= form.select :category_id, Category.all.collect { |category| [category.title, category.id] } %>
+    <%= form.select :category_id, Category.all.pluck(:title, :id) %>
   </p>
 
   <p><%= form.submit %></p>

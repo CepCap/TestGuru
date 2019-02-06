@@ -1,6 +1,7 @@
 <h1> Contact us! </h1>
+<%= render 'shared/errors', resource: @feedback %>
 
-<%= form_with model: [@feedback], local: true do |form| %>
+<%= form_with model: @feedback, local: true do |form| %>
   <div class="form-group">
     <%= form.label :message %><br>
     <%= form.text_area :message %>

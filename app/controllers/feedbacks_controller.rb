@@ -1,18 +1,17 @@
 class FeedbacksController < ApplicationController
+  include ActiveModel::Model
 
   def new
     @feedback = Feedback.new
   end
 
   def create
-    @feedback = Feedback.new(feedback_params)
-    @feedback.user = current_user
+    @feedback = current_user.feedbacks.new(feedback_params)
     if @feedback.valid?
       FeedbacksMailer.send_feedback(@feedback).deliver_now!
       redirect_to root_path
       flash[:notice] = "We have received your message and will be in touch soon!"
     else
-      flash[:notice] = "There was an error sending your message. Please try again."
       render :new
     end
   end
