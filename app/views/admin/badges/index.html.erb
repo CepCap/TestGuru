@@ -1,0 +1,12 @@
+<h1> Badges control. </h1>
+<p><%= link_to 'New Badge', new_admin_badge_path %></p>
+<%= render 'shared/errors', resource: @badge %>
+<table class="table">
+  <% @badges.each do |badge| %>
+  <tr>
+    <th class="align-middle"> <%= badge.name %> </th>
+    <th class="align-middle"> <%= badge.description %> </th>
+    <th class="align-middle"><%= link_to "Edit badge", edit_admin_badge_path(badge) %>
+  </tr>
+  <% end %>
+</table>

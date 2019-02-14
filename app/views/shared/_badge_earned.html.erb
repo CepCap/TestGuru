@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th><% if @badges.count > 1 %>
+          <%= 'Congratulations! You earned a badge:' %>
+        <% else %>
+          <%= 'Congratulations! You earned badges:' %>
+        <% end %>
+    </th>
+  </tr>
+  <% @badges.each do |badge| %>
+  <tr>
+    <th><%= image_tag(badge.picture_link) %> </th>
+    <th><%= badge.name %> | </th>
+    <th><%= badge.description %> | </th>
+  </tr>
+  <% end %>
+</table>

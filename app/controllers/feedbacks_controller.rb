@@ -1,5 +1,6 @@
 class FeedbacksController < ApplicationController
-  include ActiveModel::Model
+
+  before_action :authenticate_user!
 
   def new
     @feedback = Feedback.new

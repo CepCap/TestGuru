@@ -8,6 +8,10 @@ class TestPassage < ApplicationRecord
 
   PERCENT_TO_PASS = 85
 
+  def badge_check(current_user)
+    UserBadge.new.check!(self.test, current_user) if result == 'success'
+  end
+
   def completed?
     current_question.nil?
   end

@@ -34,7 +34,10 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :badges, except: :show
     resources :gists, only: [:index]
   end
+
+  resources :badges, only: :index
 
 end
