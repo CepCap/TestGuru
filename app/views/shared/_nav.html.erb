@@ -4,10 +4,12 @@
   <span class="navbar-text">
     <% if user_signed_in? && current_user.admin? %>
       Welcome, <b><%= current_user.email %></b> Guru! |
+      <b><i><%= link_to 'Contact us!', new_feedback_path %></b></i> |
       <%= link_to 'Admin control panel', admin_tests_path %> |
       <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
     <% elsif user_signed_in? %>
-      Welcome, <b><%= current_user.email %></b> Guru!
+      Welcome, <b><%= current_user.email %></b> Guru! |
+      <b><i><%= link_to 'Contact us!', new_feedback_path %></b></i> |
       <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "Log in", new_session_path(resource_name) %>

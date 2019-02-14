@@ -5,8 +5,14 @@ Rails.application.routes.draw do
 
   root 'tests#index'
 
-  resources :tests, only: :index do
+  resources :feedbacks, only: %i[new create] do
+    member do
+      get :new
+      post :create
+    end
+  end
 
+  resources :tests, only: :index do
     member do
       post :start
     end

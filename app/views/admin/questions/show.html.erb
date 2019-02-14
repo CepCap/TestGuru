@@ -1,4 +1,5 @@
 <p> Body: <%= @question.body %> </p>
 <p> Test_id: <%= @question.test_id %> </p>
+<p><%= link_to "Edit question", edit_admin_question_path(@question) %> </p>
 
 <p><%= link_to "Back to tests", tests_path %></p>
