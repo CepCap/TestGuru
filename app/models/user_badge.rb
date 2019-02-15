@@ -2,6 +2,18 @@ class UserBadge < ApplicationRecord
   belongs_to :user
   belongs_to :badge
 
+  def check!(current_test, current_user)
+    @current_user = current_user
+    @current_test = current_test
+    @tests_done = @current_user.test_passages.all.pluck(:test_id).uniq
+    @badges = []
+    @badges.push(first_time_done,
+                 category_done,
+                 level_done)
+    @badges
+  end
+
+  private
 
   def first_time_done
     if @tests_done.exclude?(@current_test.id)
@@ -23,32 +35,19 @@ class UserBadge < ApplicationRecord
     end
   end
 
-  def check!(current_test, current_user)
-    @current_user = current_user
-    @current_test = current_test
-    @tests_done = @current_user.test_passages.all.pluck(:test_id).uniq
-    @badges = []
-    @badges.push(first_time_done,
-                 category_done,
-                 level_done)
-    @badges
-  end
-
-  private
-
   def give_badge(requirement)
     case requirement
     when :first_time
       Badge.where(requirement: :first_time).each do |badge|
-        @current_user.user_badges.new(badge_id: badge).save
+        @current_user.user_badges.create(badge_id: badge)
       end
     when :category
       Badge.where(requirement: :category).each do |badge|
-        @current_user.user_badges.new(badge_id: badge).save
+        @current_user.user_badges.create(badge_id: badge)
       end
     when :level
       Badge.where(requirement: :level).each do |badge|
-        @current_user.user_badges.new(badge_id: badge).save
+        @current_user.user_badges.create(badge_id: badge)
       end
     else
       nil
