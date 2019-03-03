@@ -1,12 +1,4 @@
 <h1> Your badges! </h1>
-<table>
-  <% @badges.each do |badge| %>
-  <tr>
-    <th><%= image_tag(badge.picture_link) %> </th>
-    <th><%= badge.name %> | </th>
-    <th><%= badge.description %> | </th>
-  </tr>
-  <% end %>
-</table>
+<%= render 'shared/badge_earned' %>
 
 <p><%= link_to "Back", tests_path %></p>
