@@ -1,7 +1,8 @@
 <h1> Passing <%= @test_passage.test.title %> test </h1>
 <h1><%= "#{@test_passage.count}/#{@test_passage.test.questions.count}" %> Questions </h1>
+<%= content_tag :h1, "", class: 'myTimer', data: { time: @time_left } %>
 <%= content_tag :h1, class: 'myProgress', data: { progress: @test_passage.completion_percent } do %>
-  <h1 class="myBar hide"><%= "#{@test_passage.completion_percent}% complete!" %></h1>
+  <h1 class="myBar col-md-6 hide"><%= "#{@test_passage.completion_percent}% complete!" %></h1>
 <% end %>
 
 <b><%= @test_passage.current_question.body %></b>
