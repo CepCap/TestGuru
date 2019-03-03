@@ -37,6 +37,6 @@ questions.each do |question|
     Answer.create(body: "Wrong", correct: false, question: question)
 end
 
-badges = Badge.create([{ name: 'Hello world!', description: 'Completed a test for the first time!', requirement: :first_time, picture_link: 'a'},
-                       { name: 'Category done!', description: 'Completed all tests in a certain category!', requirement: :category, picture_link: 'a'},
-                       { name: 'Level done!', description: 'Completed all tests of a certain level!', requirement: :level, picture_link: 'a'}])
+badges = Badge.create([{ name: 'Hello world!', description: 'Completed a test for the first time!', requirement: :first_time, picture_link: 'https://pp.userapi.com/c849228/v849228476/130f28/qmPebXUlTlQ.jpg'},
+                       { name: 'Category done!', description: 'Completed all tests in a certain category!', requirement: :category, picture_link: 'https://pp.userapi.com/c849228/v849228476/130f28/qmPebXUlTlQ.jpg'},
+                       { name: 'Level done!', description: 'Completed all tests of a certain level!', requirement: :level, picture_link: 'https://pp.userapi.com/c849228/v849228476/130f28/qmPebXUlTlQ.jpg'}])

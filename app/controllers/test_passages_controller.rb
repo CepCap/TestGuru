@@ -7,8 +7,7 @@ class TestPassagesController < ApplicationController
   end
 
   def result
-    @badges = @test_passage.badge_check(current_user)
-    @badges.compact!.flatten!
+    @badges = BadgeAwardService.new.call(@test_passage)
   end
 
   def update

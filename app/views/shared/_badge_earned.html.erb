@@ -1,17 +1,19 @@
 <table>
   <tr>
-    <th><% if @badges.count > 1 %>
-          <%= 'Congratulations! You earned a badge:' %>
-        <% else %>
-          <%= 'Congratulations! You earned badges:' %>
-        <% end %>
-    </th>
+    <% if @badges.present? && controller_name == 'test_passages' %>
+      <th><% if @badges.count > 1 %>
+            <%= 'Congratulations! You earned a badge:' %>
+          <% else %>
+            <%= 'Congratulations! You earned badges:' %>
+          <% end %>
+      </th>
+    <% end %>
   </tr>
   <% @badges.each do |badge| %>
-  <tr>
-    <th><%= image_tag(badge.picture_link) %> </th>
-    <th><%= badge.name %> | </th>
-    <th><%= badge.description %> | </th>
-  </tr>
+    <tr class='row'>
+      <th class='col-md-4'><%= image_tag(badge.picture_link) %> </th>
+      <th class='col-md-4'><%= badge.name %> </th>
+      <th class='col-md-4'><%= badge.description %> </th>
+    </tr>
   <% end %>
 </table>
