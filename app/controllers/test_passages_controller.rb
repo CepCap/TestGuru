@@ -4,6 +4,8 @@ class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show result update gist]
 
   def show
+    @time_left = (@test_passage.created_at.since(@test_passage.test.time.minutes) - Time.now).round
+    redirect_to result_test_passage_path(@test_passage) if @time_left <= 0
   end
 
   def result

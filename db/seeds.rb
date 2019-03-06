@@ -18,11 +18,11 @@ users = User.create([{ email: 'test@gmail.com' },
                      { email: 'te@gmail.com' },
                      { email: 't@gmail.com' }])
 
-tests = Test.create([{ title: "Hello world!", category: categories[0], level: 1, author: users[0]},
-                     { title: "Off to a fresh start.", category: categories[1], level: 2, author: users[0] },
-                     { title: "Lets get to business", category: categories[2], level: 3, author: users[1] },
-                     { title: "How and why", category: categories[2], level: 5, author: users[1] },
-                     { title: "Really complicated stuff", category: categories[3], level: 5, author: users[1] }])
+tests = Test.create([{ title: "Hello world!", category: categories[0], level: 1, time: 15, author: users[0] },
+                     { title: "Off to a fresh start.", category: categories[1], level: 2, time: 15, author: users[0] },
+                     { title: "Lets get to business", category: categories[2], level: 3, time: 15, author: users[1] },
+                     { title: "How and why", category: categories[2], level: 5, time: 15, author: users[1] },
+                     { title: "Really complicated stuff", category: categories[3], level: 5, time: 15, author: users[1] }])
 
 questions = []
 
