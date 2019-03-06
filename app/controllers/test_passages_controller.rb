@@ -7,6 +7,7 @@ class TestPassagesController < ApplicationController
   end
 
   def result
+    @badges = BadgeAwardService.new.call(@test_passage)
   end
 
   def update

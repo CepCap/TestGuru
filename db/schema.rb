@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_02_093253) do
+ActiveRecord::Schema.define(version: 2019_02_13_175238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2019_02_02_093253) do
     t.datetime "updated_at", null: false
     t.bigint "question_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "requirement"
+    t.string "picture_link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_badges_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -80,6 +91,15 @@ ActiveRecord::Schema.define(version: 2019_02_02_093253) do
     t.index ["title", "level"], name: "index_tests_on_title_and_level", unique: true
   end
 
+  create_table "user_badges", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "badge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["badge_id"], name: "index_user_badges_on_badge_id"
+    t.index ["user_id"], name: "index_user_badges_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -100,6 +120,8 @@ ActiveRecord::Schema.define(version: 2019_02_02_093253) do
     t.string "type", default: "User", null: false
     t.string "first_name"
     t.string "last_name"
+    t.bigint "badge_id"
+    t.index ["badge_id"], name: "index_users_on_badge_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -107,6 +129,7 @@ ActiveRecord::Schema.define(version: 2019_02_02_093253) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "badges", "user_badges", column: "user_id"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
@@ -116,4 +139,7 @@ ActiveRecord::Schema.define(version: 2019_02_02_093253) do
   add_foreign_key "test_passages", "users"
   add_foreign_key "tests", "categories"
   add_foreign_key "tests", "users", column: "author_id"
+  add_foreign_key "user_badges", "badges"
+  add_foreign_key "user_badges", "users"
+  add_foreign_key "users", "user_badges", column: "badge_id"
 end

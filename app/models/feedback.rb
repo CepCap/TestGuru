@@ -1,4 +1,5 @@
-class Feedback < ApplicationRecord
-  belongs_to :user
+class Feedback
+  include ActiveModel::Model
+
   validates :message, presence: true
 end

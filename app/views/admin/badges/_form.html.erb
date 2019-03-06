@@ -1,0 +1,27 @@
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resource: @badge %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p><br>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+  </p><br>
+
+  <p>
+    <%= form.label :picture_link %><br>
+    <%= form.text_field :picture_link %>
+  </p><br>
+
+  <p>
+    <%= form.label :requirement %><br>
+    <%= form.select :requirement, Badge.all[0..2].pluck(:requirement) %>
+  </p>
+
+  <p><%= form.submit %></p>
+<% end %>
+
+<p><%= link_to "Back", tests_path %></p>
